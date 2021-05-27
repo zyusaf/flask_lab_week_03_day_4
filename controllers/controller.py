@@ -9,7 +9,7 @@ def index():
 
 @app.route('/events', methods=['POST'])
 def add_event():
-    # print(request.form)
+    print(request.form)
     event_name = request.form['title']
     event_date = request.form['date']
     event_number_of_guests = request.form['number of guests']
