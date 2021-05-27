@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planner</title>
+</head>
+<body>
+    <section>
+        <form action="/events" method="POST">
+            <label for="title">Event Title</label>
+            <input type="text" name="title" id="title">
+            <label for="date">Event Date</label>
+            <input type="date" name="date" id="date">
+            <label for="number of guests">Number of Guests</label>
+            <input type="number" name="number of guests" id="number of guests">
+            <label for="room">Room Location</label>
+            <input type="text" name="room" id="room">
+            <label for="description">Event Description</label>
+            <textarea name="description" id="description" cols="30" rows="2"></textarea>
+            <label for="recurring">Event Recurring</label>
+            <input type="checkbox" name="recurring" id="recurring">
+            <input type="submit" value="Add Event">
+        </form>
+    </section>
+    <section>
+        {% for event in events %}
+        <div>
+            <h2>
+                {{ event.name_of_event }}
+            </h2>
+            <ul>
+                <li>{{ event.date }}</li>
+                <li>{{ event.number_of_guests }}</li>
+                <li>{{ event.room }}</li>
+                <li>{{ event.description }}</li>
+                <li>{% if event.recurring == "on" %}
+                    <span>&#9989;</span>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+</body>
+</html>
